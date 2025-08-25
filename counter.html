@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Word & Character Counter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-lg">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Word & Character Counter</h2>
+    <textarea 
+      id="textInput" 
+      placeholder="Type or paste your text..." 
+      oninput="countText()"
+      class="w-full h-40 p-4 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none transition-all duration-200"
+    ></textarea>
+    <div class="flex justify-between mt-4 text-gray-600">
+      <div>
+        <span class="font-semibold text-lg">Words:</span> 
+        <span class="counter font-bold text-blue-600" id="wordCount">0</span>
+      </div>
+      <div>
+        <span class="font-semibold text-lg">Characters:</span> 
+        <span class="counter font-bold text-blue-600" id="charCount">0</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function countText() {
+      const text = document.getElementById("textInput").value;
+      const words = text.trim().split(/\s+/).filter((word) => word.length > 0);
+      document.getElementById("wordCount").textContent = words.length;
+      document.getElementById("charCount").textContent = text.length;
+    }
+  </script>
+</body>
+</html>
